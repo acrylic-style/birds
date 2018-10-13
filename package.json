@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "eslint": "^5.7.0"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "discord.js": "^11.4.2"
+  },
+  "name": "birds",
+  "description": "birds bot framework",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Oh no! No test specified...\"; false"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rht0910/birds.git"
+  },
+  "author": "rht0910",
+  "license": "LGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/rht0910/birds/issues"
+  },
+  "homepage": "https://github.com/rht0910/birds#readme"
+}
