@@ -1,16 +1,28 @@
 const IllegalStateError = require("../../error/IllegalStateError")
 const Command = require("./Command")
+const Store = require("./Store")
 const fs = require("fs")
 
-class CommandStore {
+class CommandStore extends Store {
+  /**
+   * @since 0.0.1
+   * @param {string} path
+   */
   constructor(path) {
+    super()
     const commands = {}
 
     const files = fs.readdirSync(path)
 
-    function setCommand(file, reload) {
-      if (reload) delete require.cache[require.resolve(`${__dirname}/commands/${file}`)]
-      const rawcommand = require(`${__dirname}/commands/${file}`)
+    /**
+     * @private
+     * @since 0.0.1
+     * @param {string} file
+     * @param {boolean} reload
+     */
+    this.setCommand = (file, reload) => {
+      if (reload) delete require.cache[require.resolve(`${path}/${file}`)]
+      const rawcommand = require(`${path}/${file}`)
       if (typeof rawcommand != "function") return
       const command = new rawcommand()
       if (rawcommand instanceof Command) return
@@ -22,14 +34,29 @@ class CommandStore {
       }
     }
 
-    for (const file of files) if (file.endsWith(".js")) setCommand(file)
+    for (const file of files) if (file.endsWith(".js")) this.setCommand(file)
+    /**
+     * @private
+     */
+    this.commands_get = commands
 
     return {
       commands,
       load(file) {
-        setCommand(file, true)
+        this.setCommand(file, true)
       },
     }
+  }
+
+  /**
+   * Get Commands.
+   *
+   * @since 0.0.1
+   * @readonly
+   * @type {object}
+   */
+  get commands() {
+    return this.commands_get
   }
 }
 

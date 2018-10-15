@@ -48,8 +48,13 @@ declare module 'birds' {
   export class BirdsClient extends Client {
     public constructor(options?: BirdsClientOptions);
     public options: BirdsClientOptions;
+    readonly roundedPing: number;
 
     public login(token?: string): Promise<string>;
+  }
+
+  export class Store {
+    readonly self: Store;
   }
 
   export class Command {
@@ -59,7 +64,20 @@ declare module 'birds' {
   }
 
   export class CommandStore {
-    public constructor(path: string)
+    public constructor(path: string);
+    readonly commands: object;
+    private setCommand(file: string, reload: boolean);
+  }
+
+  export class LanguageStore {
+    public constructor(path: string);
+    private _language: object;
+    readonly language: object;
+  }
+
+  export class Util {
+    public static mergeObject(obj1: object, obj2: object): object;
+    public static loadModule(path: string): any;
   }
 
 //#region Errors
@@ -70,10 +88,12 @@ declare module 'birds' {
 //#region TypeDefs
   export type BirdsClientOptions = {
     language?: string;
+    language_extension?: string;
+    language_codes?: Array;
     prefix?: string;
     prefixCaseInsensitive?: boolean;
     ownerID?: string;
-    typing: boolean;
+    typing?: boolean;
   } & ClientOptions;
 
   export type BirdsCommandOptions = {

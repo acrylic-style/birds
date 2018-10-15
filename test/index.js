@@ -1,18 +1,27 @@
-const { Client } = require("../src/")
-const client = new Client()
+﻿const { Client, Logger } = require("../src/")
+const logger = Logger.getLogger("test")
+const language_codes = [
+  "en_US",
+  "ja_JP",
+]
+const client = new Client({ language: "ja_JP", language_extension: ".json", language_codes: language_codes, prefix: "t:" })
 
 client.on("ready", () => {
-  console.log("Ok, logged in as: ", client.user.username)
-  console.log("Token:", client.token)
-  console.log("rawPing:", client.ping)
-  console.log("roundedPing:", client.roundedPing)
+  logger.info("Ok, logged in as: ", client.user.username)
+  logger.info("Token:", client.token)
+  logger.info("rawPing:", client.ping)
+  logger.info("roundedPing:", client.roundedPing)
 })
 
 client.on("message", async msg => {
   if (msg.content === "ping") {
-    console.log("rawPing:", client.ping)
-    console.log("roundedPing:", client.roundedPing)
+    logger.info("rawPing:", msg.client.ping)
+    logger.info("roundedPing:", client.roundedPing)
   }
 })
 
-client.login("NDg5NzY0MjkyMTgzMzI2NzIw.DqPXIw.ZuJ-MUNVVwG8oWikNJqCwmWRMFY")
+client.on("birdsError", e => {
+  logger.error(e)
+})
+
+client.login("<censored>")

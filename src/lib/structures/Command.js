@@ -1,4 +1,4 @@
-const Discord = require('discord.js')
+const Discord = require("discord.js")
 const { Permissions } = Discord
 
 class Command {
@@ -26,8 +26,10 @@ class Command {
 
   /**
    * @abstract
+   * @param {Discord.Message} message
+   * @param {object} lang
    */
-  run() { }
+  run(message, lang) { }
 
   /**
    * @abstract

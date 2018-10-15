@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@types/node": "^10.11.7",
     "eslint": "^5.7.0"
   },
   "dependencies": {
@@ -10,6 +11,7 @@
   "description": "birds bot framework",
   "version": "0.0.1",
   "main": "src/index.js",
+  "types": "typings/index.d.ts",
   "scripts": {
     "test": "echo \"Oh no! No test specified...\"; false"
   },

@@ -1,0 +1,7 @@
+--- The log begin at 2018-10-15 12:01:56 ---
+[37m[46m[2018-9-15 12:1:56.332][49m[39m [38;2;128;0;128mlogger[39m [94minfo[39m [32mThe log file has initialized.[39m
+[37m[46m[2018-9-15 12:1:56.345][49m[39m [38;2;128;0;128mlogger[39m [94minfo[39m [32mRegistered logger for: test[39m
+[37m[46m[2018-9-15 12:1:57.111][49m[39m [38;2;128;0;128mlogger[39m [94minfo[39m [32mOk, logged in as: [39m
+[37m[46m[2018-9-15 12:1:57.115][49m[39m [38;2;128;0;128mlogger[39m [94minfo[39m [32mToken:[39m
+[37m[46m[2018-9-15 12:1:57.119][49m[39m [32mtest[39m [94minfo[39m [32mrawPing:[39m
+[37m[46m[2018-9-15 12:1:57.122][49m[39m [32mtest[39m [94minfo[39m [32mroundedPing:[39m
