@@ -22,10 +22,20 @@ class LanguageStore extends Store {
      * @type {object} { LanguageCode: any }
      */
     this._language = {}
-    language_codes.forEach(code => {
-      mergeObject(this._language, { [code]: loadModule(path + "/" + code + extension) })
-      mergeObject(this._language[code], mergeObject(this._language["en_US"], this._language[code]))
-    })
+    try {
+      language_codes.forEach(code => {
+        mergeObject(this._language, { [code]: loadModule(path + "/" + code + extension) })
+        mergeObject(this._language[code], mergeObject(this._language["en_US"], this._language[code]))
+      })
+    } catch (e) {
+      /**
+       * Provides Error if is there found error[s].
+       *
+       * @type {undefined|Error}
+       */
+      this.err = e
+      return
+    }
     return this.language
   }
 

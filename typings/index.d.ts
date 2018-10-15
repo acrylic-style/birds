@@ -51,6 +51,7 @@ declare module 'birds' {
     readonly roundedPing: number;
 
     public login(token?: string): Promise<string>;
+    public config(args: object): void;
   }
 
   export class Store {
