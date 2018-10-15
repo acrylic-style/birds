@@ -53,7 +53,7 @@ class BirdsClient extends Discord.Client {
         const args = message.content.replace(this.options.prefix, "").split(" ")
         console.log(`${message.author.tag} sent command: ${message.content} (cmd: ${args[0]})`)
         if (this.commands[args[0]]) {
-          this.commands[args[0]].run(message, this.languages, args, this.options.custom_args).catch(error => {
+          this.commands[args[0]].run(message, this.languages, args, this.options.custom_args, this.options.custom_args2).catch(error => {
             this.emit("birdsError", error)
             message.channel.send(this.core_languages["error_occurred"])
             return false
@@ -63,6 +63,16 @@ class BirdsClient extends Discord.Client {
         }
       }
     })
+  }
+
+  /**
+   * Configure custom options.
+   *
+   * @since 0.0.1
+   * @param {object} args arguments(object)
+   */
+  config(args) {
+    this.options.custom_args2 = args
   }
 
   /**
