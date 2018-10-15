@@ -22,6 +22,7 @@ class BirdsClient extends Discord.Client {
    * @property {boolean}  [prefixCaseInsensitive=true]
    * @property {string}   [ownerID=undefined]
    * @property {object}   [custom_args={}]
+   * @property {string}   [root_dir=""]
    */
 
   /**
@@ -36,7 +37,7 @@ class BirdsClient extends Discord.Client {
      * @name BirdsClient#options
      * @type {BirdsClientOptions}
      */
-    this.rootDir = path.resolve(".")
+    this.rootDir = path.resolve("./" + options.root_dir)
     this.commands = (new CommandStore(this.rootDir + "/commands/")).commands
 
     if (!this.options.language_codes.includes(this.options.language)) throw new InvalidArgumentError("Provided Language Codes not contains selected language.\n(It should be xx_XX.)")

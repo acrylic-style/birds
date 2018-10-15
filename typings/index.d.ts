@@ -94,6 +94,7 @@ declare module 'birds' {
     prefixCaseInsensitive?: boolean;
     ownerID?: string;
     custom_args: object;
+    root_dir: string;
   } & ClientOptions;
 
   export type BirdsCommandOptions = {

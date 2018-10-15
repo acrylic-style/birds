@@ -7,6 +7,7 @@ const defs = {
     prefixCaseInsensitive: true,
     ownerID: undefined,
     custom_args: {},
+    root_dir: "",
   },
 }
 
