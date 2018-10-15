@@ -6,6 +6,7 @@ const defs = {
     prefix: "!",
     prefixCaseInsensitive: true,
     ownerID: undefined,
+    custom_args: {},
   },
 }
 

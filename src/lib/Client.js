@@ -21,6 +21,7 @@ class BirdsClient extends Discord.Client {
    * @property {string}   [prefix="!"]
    * @property {boolean}  [prefixCaseInsensitive=true]
    * @property {string}   [ownerID=undefined]
+   * @property {object}   [custom_args={}]
    */
 
   /**
@@ -52,7 +53,7 @@ class BirdsClient extends Discord.Client {
         const args = message.content.replace(this.options.prefix, "").split(" ")
         console.log(`${message.author.tag} sent command: ${message.content} (cmd: ${args[0]})`)
         if (this.commands[args[0]]) {
-          this.commands[args[0]].run(message, this.languages, args).catch(error => {
+          this.commands[args[0]].run(message, this.languages, args, this.options.custom_args).catch(error => {
             this.emit("birdsError", error)
             message.channel.send(this.core_languages["error_occurred"])
             return false
