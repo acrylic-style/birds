@@ -6,7 +6,7 @@ declare module 'birds' {
 		BufferResolvable,
 		CategoryChannel as DiscordCategoryChannel,
 		Channel,
-		Client,
+		Client as DiscordClient,
 		ClientApplication,
 		ClientOptions,
 		ClientUser,
@@ -45,7 +45,7 @@ declare module 'birds' {
   export const version: string;
 
 //#region Classes
-  export class BirdsClient extends Client {
+  export class Client extends DiscordClient {
     public constructor(options?: BirdsClientOptions);
     public options: BirdsClientOptions;
     readonly roundedPing: number;
