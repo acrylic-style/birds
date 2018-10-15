@@ -6,7 +6,6 @@ const defs = {
     prefix: "!",
     prefixCaseInsensitive: true,
     ownerID: undefined,
-    typing: true,
   },
 }
 

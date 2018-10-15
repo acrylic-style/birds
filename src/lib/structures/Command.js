@@ -26,10 +26,8 @@ class Command {
 
   /**
    * @abstract
-   * @param {Discord.Message} message
-   * @param {object} lang
    */
-  run(message, lang) { }
+  async run() { }
 
   /**
    * @abstract

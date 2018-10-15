@@ -21,7 +21,6 @@ class BirdsClient extends Discord.Client {
    * @property {string}   [prefix="!"]
    * @property {boolean}  [prefixCaseInsensitive=true]
    * @property {string}   [ownerID=undefined]
-   * @property {boolean}  [typing=true]
    */
 
   /**
@@ -50,20 +49,17 @@ class BirdsClient extends Discord.Client {
 
     this.on("message", message => {
       if (message.content.startsWith(this.options.prefix)) {
-        if (this.options.typing) message.channel.startTyping()
         const args = message.content.replace(this.options.prefix, "").split(" ")
         console.log(`${message.author.tag} sent command: ${message.content} (cmd: ${args[0]})`)
         if (this.commands[args[0]]) {
-          this.commands[args[0]].run(message, this.languages).catch(error => {
+          this.commands[args[0]].run(message, this.languages, args).catch(error => {
             this.emit("birdsError", error)
             message.channel.send(this.core_languages["error_occurred"])
-            if (this.options.typing) message.channel.stopTyping()
             return false
           })
         } else {
           message.channel.send(this.core_languages["unknown_command"])
         }
-        setTimeout(() => message.channel.stopTyping(), 1000) // for avoid really fast API abuse
       }
     })
   }

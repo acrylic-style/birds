@@ -59,7 +59,7 @@ declare module 'birds' {
 
   export class Command {
     public constructor(options?: BirdsCommandOptions);
-    public abstract run();
+    public abstract async run(message: Message, lang: LanguageStore, args: Array);
     public abstract hasPermission(member: GuildMember);
   }
 
@@ -93,7 +93,6 @@ declare module 'birds' {
     prefix?: string;
     prefixCaseInsensitive?: boolean;
     ownerID?: string;
-    typing?: boolean;
   } & ClientOptions;
 
   export type BirdsCommandOptions = {
