@@ -1,7 +1,7 @@
---- The log begin at 2018-10-15 21:04:00 ---
-[37m[46m[2018-9-15 21:4:0.943][49m[39m [38;2;128;0;128mlogger[39m [94minfo[39m [32mThe log file has initialized.[39m
-[37m[46m[2018-9-15 21:4:0.957][49m[39m [38;2;128;0;128mlogger[39m [94minfo[39m [32mRegistered logger for: test[39m
-[37m[46m[2018-9-15 21:4:1.781][49m[39m [1m[33mtest[39m[22m [94minfo[39m [32mOk, logged in as: BlackListener Extension[39m
-[37m[46m[2018-9-15 21:4:1.786][49m[39m [1m[33mtest[39m[22m [94minfo[39m [32mとーくん:NDcxNTU4Nzc2NzUxNjUyODY4.DqYQ6A.RgiwwXiColv2vLVJk3xgS43kXoY[39m
-[37m[46m[2018-9-15 21:4:1.789][49m[39m [1m[33mtest[39m[22m [94minfo[39m [32mrawPing:NaN[39m
-[37m[46m[2018-9-15 21:4:1.793][49m[39m [1m[33mtest[39m[22m [94minfo[39m [32mroundedPing:NaN[39m
+--- The log begin at 2018-10-23 19:54:30 ---
+[37m[46m[2018-9-23 19:54:30.331][49m[39m [38;2;128;0;128mlogger[39m [94minfo[39m [32mThe log file has initialized.[39m
+[37m[46m[2018-9-23 19:54:30.348][49m[39m [38;2;128;0;128mlogger[39m [94minfo[39m [32mRegistered logger for: test[39m
+[37m[46m[2018-9-23 19:54:31.221][49m[39m [37mtest[39m [94minfo[39m [32mOk, logged in as: 403 Forbidden[39m
+[37m[46m[2018-9-23 19:54:31.225][49m[39m [37mtest[39m [94minfo[39m [32mとーくん:NTA0MjM0MDA4NjIwODI2NjI2.DrCIgg.W5AfWx1xSe8r413TlaeF4Ljtkc4[39m
+[37m[46m[2018-9-23 19:54:31.229][49m[39m [37mtest[39m [94minfo[39m [32mrawPing:NaN[39m
+[37m[46m[2018-9-23 19:54:31.231][49m[39m [37mtest[39m [94minfo[39m [32mroundedPing:NaN[39m

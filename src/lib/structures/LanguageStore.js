@@ -25,7 +25,7 @@ class LanguageStore extends Store {
     try {
       language_codes.forEach(code => {
         mergeObject(this._language, { [code]: loadModule(path + "/" + code + extension) })
-        mergeObject(this._language[code], mergeObject(this._language["en_US"], this._language[code]))
+        mergeObject(this._language[code], mergeObject(this._language[/../.test(code) ? "en" : "en_US"], this._language[code]))
       })
     } catch (e) {
       /**

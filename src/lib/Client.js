@@ -10,9 +10,9 @@ const CommandStore = require("./structures/CommandStore")
 const LanguageStore = require("./structures/LanguageStore")
 
 /**
- * @extends external:Client
+ * @extends external:Discord.Client
  */
-class BirdsClient extends Discord.Client {
+class Client extends Discord.Client {
   /**
    * @typedef {external:ClientOptions} BirdsClientOptions
    * @property {string}   [language="en_US"]
@@ -31,27 +31,32 @@ class BirdsClient extends Discord.Client {
    */
   constructor(options = {}) {
     super(options)
-    this.options = Util.mergeObject(Constants.DEFAULTS.CLIENT, options)
     /**
      * @since 0.0.1
      * @name BirdsClient#options
      * @type {BirdsClientOptions}
      */
-    this.rootDir = path.resolve("./" + options.root_dir)
+    this.options = Util.mergeObject(Constants.DEFAULTS.CLIENT, options) // something went wrong
+    this.rootDir = path.resolve("./" + (options.root_dir || ""))
     this.commands = (new CommandStore(this.rootDir + "/commands/")).commands
+    this.languages = (new LanguageStore(this.rootDir + "/languages/", this.options.language_codes, this.options.language_extension))[this.options.language]
+    try {
+      this.language = Util.lang_convert(this.options.language)
+    } catch (e) {
+      this.emit("birdsError", e)
+    }
 
     if (!this.options.language_codes.includes(this.options.language)) throw new InvalidArgumentError("Provided Language Codes not contains selected language.\n(It should be xx_XX.)")
-    this.languages = (new LanguageStore(this.rootDir + "/languages/", this.options.language_codes, this.options.language_extension))[this.options.language]
 
-    const language_codes = [
+    const available_language_codes = [
       "en_US",
       "ja_JP",
     ]
-    this.core_languages = (new LanguageStore(__dirname + "/../lang/", language_codes, ".json"))[this.options.language]
+    this.core_languages = (new LanguageStore(__dirname + "/../lang/", available_language_codes, ".json"))[this.language]
 
     this.on("message", message => {
       if (message.content.startsWith(this.options.prefix)) {
-        const args = message.content.replace(this.options.prefix, "").split(" ")
+        const args = message.content.split(" ")
         console.log(`${message.author.tag} sent command: ${message.content} (cmd: ${args[0]})`)
         if (this.commands[args[0]]) {
           this.commands[args[0]].run(message, this.languages, args, this.options.custom_args, this.options.custom_args2).catch(error => {
@@ -99,4 +104,4 @@ class BirdsClient extends Discord.Client {
   }
 }
 
-module.exports = BirdsClient
+module.exports = Client

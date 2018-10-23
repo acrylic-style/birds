@@ -1,10 +1,10 @@
 ﻿const { Client, Logger } = require("../src/")
 const logger = Logger.getLogger("test")
 const language_codes = [
-  "en_US",
-  "ja_JP",
+  "en",
+  "ja",
 ]
-const client = new Client({ language: "ja_JP", language_extension: ".json", language_codes: language_codes, prefix: "t:" })
+const client = new Client({ language: "ja", language_extension: ".json", language_codes: language_codes, prefix: "t:" })
 
 client.on("ready", () => {
   logger.info("Ok, logged in as: " + client.user.username)
@@ -24,4 +24,4 @@ client.on("birdsError", e => {
   logger.error(e)
 })
 
-client.login("<Your token>")
+client.login("<Token>")

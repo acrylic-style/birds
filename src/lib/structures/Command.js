@@ -5,7 +5,7 @@ class Command {
   /**
    * Construct this Command Instance.
    *
-   * If not extend this Class, it will be marked 'not a command'
+   * If not extend this Class, your file will be ignored.
    * @param {string} name Command name
    * @param {Object} options alias, args, permission(number)
    * @constructor

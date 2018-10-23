@@ -18,7 +18,7 @@ declare module 'birds' {
 		Guild as DiscordGuild,
 		GuildChannel as DiscordGuildChannel,
 		GuildEmoji,
-		GuildMember,
+		GuildMember as DiscordGuildMember,
 		Message as DiscordMessage,
 		MessageAttachment,
 		MessageCollector,
@@ -60,7 +60,7 @@ declare module 'birds' {
 
   export class Command {
     public constructor(options?: BirdsCommandOptions);
-    public abstract async run(message: Message, lang: LanguageStore, args: Array);
+    public abstract async run(message: Message, lang: object, args: Array<String>);
     public abstract hasPermission(member: GuildMember);
   }
 
@@ -79,11 +79,22 @@ declare module 'birds' {
   export class Util {
     public static mergeObject(obj1: object, obj2: object): object;
     public static loadModule(path: string): any;
+    public static lang_convert(lang: string): string;
   }
 
 //#region Errors
   export class IllegalStateError extends Error {
     public constructor(message?: string);
+    public name: string;
+    public stack?: string;
+    public message: string;
+  }
+
+  export class InvalidArgumentError extends Error {
+    public constructor(message?: string);
+    public name: string;
+    public stack?: string;
+    public message: string;
   }
 
 //#region TypeDefs
